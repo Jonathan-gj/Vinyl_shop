@@ -1,21 +1,23 @@
 <?php
 
+namespace App\Http\Controllers\Admin;
 
-Route::view('/', 'home');
-Route::view('contact-us', 'contact');
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-Route::prefix('admin')->group(function () {
-    Route::redirect('/', 'records');
-    Route::get('records', function (){
+class RecordController extends Controller
+{
+    public function index()
+    {
         $records = [
             'Queen - Greatest Hits',
             'The Rolling Stones - Sticky Fingers',
             'The Beatles - Abbey Road',
             'The Who - Tommy'
         ];
+
         return view('admin.records.index', [
             'records' => $records
         ]);
-    });
-});
-
+    }
+}
